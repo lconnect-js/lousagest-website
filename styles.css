@@ -1,0 +1,776 @@
+:root {
+  /* Premium Color Palette - Updated to #0000c1 */
+  --primary-blue: #0000c1;
+  /* Exact Royal Blue requested */
+  --primary-accent: #2929ff;
+  /* Brighter shade for hover/accents */
+  --primary-light: #e6e6ff;
+  /* Very light blue for backgrounds */
+
+  --text-main: #1e293b;
+  /* Dark slate for main text */
+  --text-light: #475569;
+  /* Muted slate for secondary text */
+  --text-white: #ffffff;
+
+  --bg-white: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #eff1ff 0%, #ffffff 100%);
+
+  /* Modern Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1.5rem;
+  --spacing-md: 3rem;
+  --spacing-lg: 6rem;
+  --spacing-xl: 8rem;
+
+  /* Refined Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 193, 0.15);
+  /* Tinted shadow */
+
+  /* UI Elements */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-full: 9999px;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+  background-color: var(--bg-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--primary-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  /* Standard width for consistency */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- Header & Nav --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  transition: var(--transition);
+}
+
+.header.scrolled .navbar {
+  height: 70px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  transition: var(--transition);
+}
+
+.header.scrolled .logo-img {
+  height: 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  /* Ensure items inside UL are centered vertically */
+  margin: 0;
+  /* Reset default UL margins */
+  height: 100%;
+  /* Take full height of parent if needed, or just auto */
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  position: relative;
+  padding: 5px 0;
+  display: inline-flex;
+  /* Better control */
+  align-items: center;
+  line-height: 1;
+  /* Remove excess line-height for precise centering */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-blue);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary-blue);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-gradient);
+  position: relative;
+  padding-top: 90px;
+}
+
+/* Modern Abstract Decoration */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 60vh;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(0, 0, 193, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  /* Slightly wider for better balance */
+  margin: 0 auto;
+  /* Centered hero content usually looks most balanced */
+  text-align: center;
+  /* Centering hero for symmetry */
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--primary-light);
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--primary-blue);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 193, 0.3);
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+}
+
+.btn:hover {
+  background-color: var(--primary-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 193, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-blue);
+  box-shadow: none;
+  border: 2px solid rgba(0, 0, 193, 0.15);
+  margin-left: 0;
+  /* Reset for flex gap */
+}
+
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 193, 0.05);
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* --- Sections Generic --- */
+section {
+  padding: var(--spacing-xl) 0;
+  /* Consistent large padding */
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+
+.section-label {
+  color: var(--primary-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-blue);
+}
+
+.section-desc {
+  font-size: 1.15rem;
+  color: var(--text-light);
+}
+
+/* --- About Section - Adjusted for Geometric Balance --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 50/50 Split for symmetry */
+  gap: 4rem;
+  align-items: center;
+  /* Center vertically specifically */
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  height: 100%;
+  /* Match height visual if possible */
+}
+
+.stat-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+  /* Enforce consistent height */
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-light);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: block;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+/* --- Services --- */
+.services-section {
+  background-color: var(--bg-subtle);
+  position: relative;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Special Case for 5 items to look balanced visually: 
+   Row 1: 3 items
+   Row 2: 2 items centered
+*/
+.services-grid>div:nth-last-child(2):nth-child(4),
+.services-grid>div:last-child:nth-child(5) {
+  /* This css trick might be tricky, easier to just let grid flow or center alignment on parent */
+}
+
+/* Fallback for smaller screens */
+@media (width < 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  height: 100%;
+  /* Equal heights */
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-blue);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-subtle);
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  color: var(--primary-blue);
+}
+
+.service-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.service-text {
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* --- Methodology --- */
+.method-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--radius-md);
+  border-top: 4px solid var(--primary-blue);
+  /* Top border for vertical consistency */
+  box-shadow: var(--shadow-card);
+  height: 100%;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (width < 1024px) {
+  .method-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.method-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-blue);
+}
+
+/* --- Mission & Values - Balanced --- */
+.mission-section {
+  background-color: var(--primary-blue);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-xl) 0;
+}
+
+.mission-section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 50/50 Split */
+  gap: 5rem;
+  position: relative;
+  z-index: 2;
+  align-items: start;
+}
+
+.mission-section h2,
+.mission-section h3 {
+  color: white;
+}
+
+.mission-text {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.values-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.value-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.value-icon {
+  color: white;
+  font-size: 1.25rem;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+  background-color: var(--bg-white);
+}
+
+.contact-wrapper {
+  background-color: transparent;
+  width: 100%;
+}
+
+.contact-info {
+  background-color: var(--bg-subtle);
+  padding: 4rem;
+  /* More generous padding */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 columns for 4 items typically */
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  /* Vertical alignment inside items for center look */
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.contact-icon {
+  background: white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--primary-blue);
+  box-shadow: var(--shadow-sm);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-details h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-blue);
+  font-weight: 700;
+}
+
+.contact-details p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #000020;
+  /* Very dark blue close to black */
+  color: #94a3b8;
+  padding: var(--spacing-lg) 0 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+}
+
+.footer-logo {
+  filter: brightness(0) invert(1);
+  height: 40px;
+  width: auto;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.footer-col h4 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a:hover {
+  color: white;
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .about-grid,
+  .mission-grid,
+  .contact-info,
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .services-grid,
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-item {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .nav-links {
+    display: none;
+    /* Hide for now, JS toggles it */
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+  }
+}
+
+/* --- Animations --- */
+/* Enhanced Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Stagger for grids */
+.services-grid>div:nth-child(2) {
+  transition-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.services-grid>div:nth-child(3) {
+  transition-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.services-grid>div:nth-child(4) {
+  transition-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.services-grid>div:nth-child(5) {
+  transition-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.services-grid>div:nth-child(6) {
+  transition-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.stats-grid>div:nth-child(2) {
+  transition-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.stats-grid>div:nth-child(3) {
+  transition-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.stats-grid>div:nth-child(4) {
+  transition-delay: 0.3s;
+  animation-delay: 0.3s;
+}
